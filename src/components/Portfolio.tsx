@@ -219,7 +219,7 @@ const Portfolio = () => {
               Mayank Tanwar
             </div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'skills', 'projects', 'experience'].map((section) => (
+              {['home', 'about', 'skills', 'experience','projects'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
