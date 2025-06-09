@@ -291,13 +291,13 @@ const Portfolio = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I'm a Computer Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I’m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
+                  I&apos;m a Computer Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  My strengths lie in full-stack development, artificial intelligence, and data science. I enjoy exploring new technologies—whether it’s experimenting with transformer models for NLP tasks, designing intuitive user experiences, or optimizing backend systems for performance and scalability.
+                  My strengths lie in full-stack development, artificial intelligence, and data science. I enjoy exploring new technologies—whether it&apos;s experimenting with transformer models for NLP tasks, designing intuitive user experiences, or optimizing backend systems for performance and scalability.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  What drives me is continuous learning and the impact technology can create. I believe in clean code, meaningful collaboration, and building for the future. I'm always looking to push boundaries and grow both as an engineer and a thinker.
+                  What drives me is continuous learning and the impact technology can create. I believe in clean code, meaningful collaboration, and building for the future. I&apos;m always looking to push boundaries and grow both as an engineer and a thinker.
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
@@ -515,11 +515,11 @@ const Portfolio = () => {
       <section className="py-20 px-4 border-t border-slate-700/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${playfair.className}`}>
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, innovative projects, 
-            and collaborations. Let's build something amazing together!
+            I&apos;m always open to discussing new opportunities, innovative projects, 
+            and collaborations. Let&apos;s build something amazing together!
           </p>
           
           <div className="flex justify-center space-x-6">
