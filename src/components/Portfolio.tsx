@@ -353,7 +353,7 @@ useEffect(() => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I&apos;m a AI and Data Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
+                  I&apos;m an AI and Data Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   My strengths lie in full-stack development, artificial intelligence, and data science. I enjoy exploring new technologies—whether it&apos;s experimenting with transformer models for NLP tasks, designing intuitive user experiences, or optimizing backend systems for performance and scalability.
