@@ -310,7 +310,7 @@ useEffect(() => {
               {displayText}<span className="animate-blink ml-1">|</span>
             </h3>
             <p className="text-md md:text-lg mb-12 text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              Versatile Computer Science graduate with a strong foundation in full-stack development, artificial intelligence, and data science. Equipped with hands-on experience building scalable web applications, intelligent systems, and impactful real-world solutions. Passionate about exploring emerging technologies and applying them creatively across domains.
+              Versatile AI and Data Science graduate with a strong foundation in full-stack development, artificial intelligence, and data science. Equipped with hands-on experience building scalable web applications, intelligent systems, and impactful real-world solutions. Passionate about exploring emerging technologies and applying them creatively across domains.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -353,7 +353,7 @@ useEffect(() => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I&apos;m a Computer Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
+                  I&apos;m a AI and Data Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   My strengths lie in full-stack development, artificial intelligence, and data science. I enjoy exploring new technologies—whether it&apos;s experimenting with transformer models for NLP tasks, designing intuitive user experiences, or optimizing backend systems for performance and scalability.
