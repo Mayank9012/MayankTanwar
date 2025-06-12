@@ -1,13 +1,19 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Mail, MapPin, Calendar, Award, Briefcase } from 'lucide-react';
-import { Playfair_Display, Poppins } from 'next/font/google';
+import { Playfair_Display, Poppins, Caveat } from 'next/font/google';
+import '../app/cursor.css'; 
 
-// Initialize the fonts
+
 const playfair = Playfair_Display({ subsets: ['latin'] });
 const poppins = Poppins({ 
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin']
+});
+const kapakana = Caveat({ 
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-kapakana',
 });
 
 const Portfolio = () => {
@@ -34,13 +40,12 @@ const Portfolio = () => {
           }
         });
       },
-      { threshold: 0.1 } // Lower threshold to make sections visible earlier
+      { threshold: 0.1 } 
     );
 
     const sections = document.querySelectorAll('section[id]');
     sections.forEach((section) => observer.observe(section));
 
-    // Set projects visible initially if needed
     setIsVisible(prev => ({
       ...prev,
       projects: true
@@ -52,6 +57,52 @@ const Portfolio = () => {
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+
+const [displayText, setDisplayText] = useState("");
+const [isDeleting, setIsDeleting] = useState(false);
+const [loopIndex, setLoopIndex] = useState(0);
+const [typingSpeed, setTypingSpeed] = useState(150);
+
+const textArray = ["Full Stack Developer", "AI & Data Science Enthusiast"];
+
+useEffect(() => {
+  const handleTyping = () => {
+    const currentText = textArray[loopIndex % textArray.length];
+    
+      if (!isDeleting) {
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+        
+        if (displayText.length === currentText.length) {
+          setTimeout(() => setIsDeleting(true), 2000);
+          setTypingSpeed(100); 
+        }
+      } else {
+        setDisplayText(currentText.substring(0, displayText.length - 1));
+        
+        if (displayText.length === 0) {
+          setIsDeleting(false);
+          setLoopIndex(loopIndex + 1);
+          setTypingSpeed(150); 
+        }
+      }
+    };
+
+
+    
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, loopIndex, typingSpeed]);
+
+    const [greetingVisible, setGreetingVisible] = useState(false);
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setGreetingVisible(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }, []);
 
   const techIcons: Record<string, string> = {
     React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -68,13 +119,16 @@ const Portfolio = () => {
     "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
     GitHub: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
     Oracle: "https://imgs.search.brave.com/cxPnqqLTUvSoCvHEWix1JMugLkFB4TVR8kt1r2vnEcA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvZmxhdC1icmFu/ZC1sb2dvLTIvNTEy/L29yYWNsZS01MTIu/cG5n",
-    SQL: "https://imgs.search.brave.com/XFBOfi8pONpONNoTRdJgC7M3vXTuzZ2XUXyA8BRx0wE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVpaWsuY29tLzI1/Ni8yMzA2LzIzMDYw/MjIucG5nP3NlbXQ9/YWlzX2luY29taW5n",
+    SQL: "https://imgs.search.brave.com/y6uO3CMdRO4keG6ChONTpidnMtOlknHM-ZSKQaoknUw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9zcWwtZmls/ZS0yOTQyNzE2LTI0/Mjc4ODQucG5nP2Y9/d2VicCZ3PTEyOA",
     R: "https://imgs.search.brave.com/nrn0MWgsaLm5mUI5pqVZCnW9i0thzxEhoS3fHJGXpbM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS9yLXByb2dy/YW1taW5nLWxhbmd1/YWdlLWljb24ucG5n",
     "C#": "https://imgs.search.brave.com/dMAEYYH5r6jVWRPy_FIPx3ALCEHvbx-RwtGJX-m3qwM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS9jLXNoYXJw/LXByb2dyYW1taW5n/LWxhbmd1YWdlLWlj/b24ucG5n",
     PHP: "https://imgs.search.brave.com/1CNXf4ML3rj3Q7c0NEZJVn9jjCd3xT0I2Dmly9e9yms/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS9waHAtcHJv/Z3JhbW1pbmctbGFu/Z3VhZ2UtaWNvbi5w/bmc",
     PowerBI: "https://imgs.search.brave.com/NIq9_RKBQyRmfxK4w893Z_Nfe06_2D2MevAas7nC-1k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/bG9vay5uZXQvd3At/Y29udGVudC91cGxv/YWRzLzIwMjMvMDkv/UG93ZXJCSS1Mb2dv/LnBuZw",
     WordPress: "https://imgs.search.brave.com/Quqpnw1MCrJ1JeMZIEezDUqY-YzLw-HPUZ7e1zqwHPA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9Xb3JkUHJl/c3MuY29tL1dvcmRQ/cmVzcy5jb20tTG9n/by53aW5lLnN2Zw",
-    FlutterFlow: "https://imgs.search.brave.com/22trsf3ded34qD47l86JR8nHJvatocJBv2FaFjAfuxs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/NGQyNDkyOTE3ZGUx/ZDI2ZGRlMjI3ODQv/NjdjMmVmNzY5MTBk/MGM5NTczZjA2MWE2/X2ZsdXR0ZXJmbG93/JTIwbG9nby5zdmc"
+    FlutterFlow: "https://imgs.search.brave.com/22trsf3ded34qD47l86JR8nHJvatocJBv2FaFjAfuxs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/NGQyNDkyOTE3ZGUx/ZDI2ZGRlMjI3ODQv/NjdjMmVmNzY5MTBk/MGM5NTczZjA2MWE2/X2ZsdXR0ZXJmbG93/JTIwbG9nby5zdmc",
+    C: "https://imgs.search.brave.com/csv7E9QAT6WSwqLjTFGBa-7VRlvHw8aSBjt9iP3OA4s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL3ByZW1p/dW0vcG5nLTI1Ni10/aHVtYi9jLWxhbmd1/YWdlLTc1MjA3MTkt/NzE5NzI5My5wbmc_/Zj13ZWJwJnc9MjU2",
+    "Tailwind CSS": "https://imgs.search.brave.com/VXppz4fZeZ14qHLF3d-Jv2hIoqW5sAxSpjrA_A6EN3Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS90YWlsd2lu/ZC1jc3MtaWNvbi5w/bmc",
+    
 
   };
 
@@ -154,7 +208,6 @@ const Portfolio = () => {
       description: "Engineering website features using MERN stack and developing AI-powered solutions.",
       achievements: [
         "Reduced page load time by 40%",
-        "Increased user engagement by 25%",
         "Developing AI chatbot to reduce response time by 50%"
       ]
     },
@@ -165,8 +218,7 @@ const Portfolio = () => {
       description: "Built Flask/MySQL systems and developed Python trading platforms.",
       achievements: [
         "Built user management system for 200+ users",
-        "Reduced task assignment time by 40%",
-        "Improved portfolio returns by 8% via automated trading"
+        "Improved portfolio returns via automated trading"
       ]
     },
     {
@@ -176,21 +228,20 @@ const Portfolio = () => {
       description: "Developed advanced web-based tools for bacterial sequence analysis research.",
       achievements: [
         "Enhanced research capabilities significantly",
-        "Reduced analysis time by 40%",
         "Built scalable pipelines with Streamlit and Snakemake"
       ]
     }
   ];
 
   const skills = {
-    languages: ["C++", "Python", "JavaScript", "TypeScript", "SQL", "R", "PHP", "C#"],
+    languages: ["C++", "Python", "JavaScript", "TypeScript", "SQL", "R", "PHP", "C#", "C", "HTML", "CSS", "Tailwind CSS"],
     frameworks: ["React", "NodeJS", "NextJS", "Flask"],
     databases: ["MongoDB", "MySQL", "Oracle"],
     tools: ["GitHub", "PowerBI", "WordPress", "FlutterFlow"]
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden ${poppins.className}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden custom-cursor ${poppins.className}`}>
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -inset-10 opacity-30">
@@ -215,11 +266,11 @@ const Portfolio = () => {
       <nav className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className={`text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${playfair.className}`}>
+            <div className={`text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${kapakana.className}`}>
               Mayank Tanwar
             </div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'skills', 'experience','projects'].map((section) => (
+              {['home', 'about', 'skills',  'experience', 'projects'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -239,16 +290,27 @@ const Portfolio = () => {
       <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="text-center max-w-4xl mx-auto">
           <div className={`transform transition-all duration-1000 ${isVisible.home ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h1 className={`text-5xl md:text-7xl font-bold mb-6 ${playfair.className}`}>
+            <h4 className={`text-lg md:text-xl font-semibold mb-4 text-cyan-400 ${poppins.className}`}>
+              <span 
+                className={`inline-block transition-all duration-1000 ${
+                  greetingVisible 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform -translate-y-8'
+                }`}
+              >
+                Hello there, I&apos;m
+              </span>
+            </h4>
+              <h1 className={`text-5xl md:text-7xl font-bold mb-6 ${playfair.className}`}>
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Mayank Tanwar
               </span>
             </h1>
-            <h3 className="text-2xl md:text-3xl mb-8 text-gray-300">
-              Full Stack Developer | AI & Data Science Enthusiast
+            <h3 className="text-2xl md:text-3xl mb-8 text-gray-300 min-h-[40px] flex items-center justify-center">
+              {displayText}<span className="animate-blink ml-1">|</span>
             </h3>
             <p className="text-md md:text-lg mb-12 text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              Versatile AI and Data Science graduate with a strong foundation in full-stack development, artificial intelligence, and data science. Equipped with hands-on experience building scalable web applications, intelligent systems, and impactful real-world solutions. Passionate about exploring emerging technologies and applying them creatively across domains.
+              Versatile Computer Science graduate with a strong foundation in full-stack development, artificial intelligence, and data science. Equipped with hands-on experience building scalable web applications, intelligent systems, and impactful real-world solutions. Passionate about exploring emerging technologies and applying them creatively across domains.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -291,7 +353,7 @@ const Portfolio = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I&apos;m an AI and Data Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
+                  I&apos;m a Computer Science graduate from IIITDM Kurnool with a strong interest in building intelligent and scalable systems. I&apos;m passionate about solving complex problems and turning innovative ideas into real-world tech solutions.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   My strengths lie in full-stack development, artificial intelligence, and data science. I enjoy exploring new technologies—whether it&apos;s experimenting with transformer models for NLP tasks, designing intuitive user experiences, or optimizing backend systems for performance and scalability.
@@ -318,7 +380,7 @@ const Portfolio = () => {
                 <h3 className={`text-2xl font-bold text-cyan-400 mb-4 ${playfair.className}`}>Education</h3>
                 <div className="space-y-4">
                   <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm border border-slate-700/50 hover:border-cyan-400/50 transition-all duration-300">
-                    <h4 className="text-xl font-semibold mb-2">B.Tech AI and Data Science</h4>
+                    <h4 className="text-xl font-semibold mb-2">B.Tech Computer Science</h4>
                     <p className="text-cyan-400 mb-2">IIITDM Kurnool</p>
                     <p className="text-gray-400">2021-2025 • GPA: 8.41</p>
                   </div>
@@ -553,7 +615,7 @@ const Portfolio = () => {
       <footer className="py-8 px-4 border-t border-slate-700/50 relative">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Mayank Tanwar. All rights reserved.
+            Designed and Developed by Mayank Tanwar
           </p>
           <p className="text-gray-500 text-sm mt-2">
             Crafted with React and Tailwind CSS
