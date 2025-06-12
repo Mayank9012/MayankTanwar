@@ -380,7 +380,7 @@ useEffect(() => {
                 <h3 className={`text-2xl font-bold text-cyan-400 mb-4 ${playfair.className}`}>Education</h3>
                 <div className="space-y-4">
                   <div className="bg-slate-800/50 p-6 rounded-lg backdrop-blur-sm border border-slate-700/50 hover:border-cyan-400/50 transition-all duration-300">
-                    <h4 className="text-xl font-semibold mb-2">B.Tech Computer Science</h4>
+                    <h4 className="text-xl font-semibold mb-2">B.Tech AI and Data Science</h4>
                     <p className="text-cyan-400 mb-2">IIITDM Kurnool</p>
                     <p className="text-gray-400">2021-2025 • GPA: 8.41</p>
                   </div>
