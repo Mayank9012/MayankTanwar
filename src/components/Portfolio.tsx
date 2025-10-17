@@ -190,11 +190,6 @@ export function Portfolio() {
                     ))}
                   </div>
 
-                  {/* View Details Link */}
-                  <button className="flex items-center gap-2 text-purple-400 hover:text-purple-300 group/btn transition-all">
-                    <span>View Details</span>
-                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </button>
                 </div>
 
                 {/* Corner Accent */}
