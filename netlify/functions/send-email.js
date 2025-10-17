@@ -135,8 +135,8 @@ exports.handler = async (event, context) => {
             
             <p style="color: #475569; font-size: 16px; line-height: 1.6;">
               Best regards,<br>
-              <strong style="color: #1e293b;">Mayank Tomar</strong><br>
-              <span style="color: #64748b;">Full Stack Developer</span>
+              <strong style="color: #1e293b;">Mayank Tanwar</strong><br>
+              <span style="color: #64748b;">Full Stack Developer & AI/ML Engineer</span>
             </p>
             
             <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e2e8f0; margin-top: 30px;">
@@ -177,3 +177,4 @@ exports.handler = async (event, context) => {
   }
 
 };
+
