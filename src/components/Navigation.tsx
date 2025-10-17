@@ -70,7 +70,7 @@ export function Navigation() {
                 onClick={() => scrollToSection('contact')}
                 className="hidden md:flex items-center justify-center relative bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white rounded-xl px-6 h-11 overflow-hidden group border-0 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
               >
-                <span className="relative z-10">Hire Me</span>
+                <span className="relative z-10">Contact Me</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF] to-[#0891B2] opacity-0 group-hover:opacity-100 transition-opacity" />
               </Button>
 
@@ -106,7 +106,7 @@ export function Navigation() {
             onClick={() => scrollToSection('contact')}
             className="flex items-center justify-center bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white rounded-lg w-full mt-4 h-11"
           >
-            Hire Me
+            Contact Me
           </Button>
         </div>
       </div>
