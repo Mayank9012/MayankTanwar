@@ -1,0 +1,43 @@
+[build]
+  # Build command
+  command = "npm run build"
+  # Directory that contains the deploy-ready HTML files and assets
+  publish = "dist"
+
+[functions]
+  # Directory where serverless functions are located
+  directory = "netlify/functions"
+  # Runtime for Node.js functions
+  node_bundler = "esbuild"
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+[[headers]]
+  # API routes headers
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+# Environment variables (you'll need to set these in Netlify dashboard)
+# GMAIL_USER = your Gmail address (e.g., mayankt9043@gmail.com)
+# GMAIL_APP_PASSWORD = your Gmail App Password (not regular password)
+
+# Redirect rules for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Form processing for contact form (backup method)
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
