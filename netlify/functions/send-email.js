@@ -50,7 +50,7 @@ exports.handler = async (event, context) => {
     }
 
     // Create transporter using Gmail SMTP
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER, // Your Gmail address
@@ -175,4 +175,5 @@ exports.handler = async (event, context) => {
       }),
     };
   }
+
 };
